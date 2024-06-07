@@ -1,0 +1,137 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>  
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <link rel="icon" href="{% static 'favicon.ico'%}" type="image/x-icon" />
+        <!-- END META SECTION -->
+
+        <!-- CSS INCLUDE -->        
+        <link rel="stylesheet" type="text/css" id="theme" href="{% static 'css/theme-night.css'%}"/>
+        <!-- EOF CSS INCLUDE -->                                    
+    </head>
+</head>
+<body>
+    <style>
+            tfoot {
+                display: table-header-group;
+            }
+            tfoot input {
+                width: 100%;
+                padding: 3px;
+                box-sizing: border-box;
+            }
+            input[type="search"] {
+                height: 30px;
+                font-size: 12px;
+                line-height: 18px;
+                box-shadow: none;
+                border: 1px solid #D5D5D5;
+                background: #F9F9F9 none repeat scroll 0% 0%;
+                border-radius: 5px;
+            }
+            .dataTables_length select {
+                width: 70px;
+                display: inline;
+                margin: 0px 5px;
+                height: 30px;
+                font-size: 12px;
+                line-height: 18px;
+                box-shadow: none;
+                border: 1px solid #D5D5D5;
+                background: #F9F9F9 none repeat scroll 0% 0%;
+                border-radius: 5px;
+            }
+        </style>
+        <div class="page-container">
+ <div class="page-container">
+
+            <!-- START PAGE SIDEBAR -->
+            <div class="page-sidebar">
+                <!-- START X-NAVIGATION -->
+                <ul class="x-navigation">
+                  
+                    <li class="xn-title">Navigation</li>
+                    <li class="active">
+                        <a href="index.html"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
+                    </li>                    
+                    <li class="xn-openable">
+                        <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Pages</span></a>
+                        <ul>
+                            <li><a href="pages-gallery.html"><span class="fa fa-image"></span> Gallery</a></li>
+                                                     
+                        </ul>
+                    </li>
+                </ul>
+                <!-- END X-NAVIGATION -->
+            </div>
+            <!-- END PAGE SIDEBAR -->
+
+            <!-- PAGE CONTENT -->
+            <div class="page-content">
+
+                <!-- START X-NAVIGATION VERTICAL -->
+                <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+                    <!-- TOGGLE NAVIGATION -->
+                    <li class="xn-icon-button">
+                        <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+                    </li>
+                    <!-- END TOGGLE NAVIGATION -->
+                    <!-- SEARCH -->
+                    <li class="xn-search">
+                        <form role="form">
+                            <input type="text" name="search" placeholder="Search..."/>
+                        </form>
+                    </li>   
+                    <!-- END SEARCH -->
+                    <!-- SIGN OUT -->
+                    <li class="xn-icon-button pull-right">
+                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+                    </li> 
+                    <!-- END SIGN OUT -->
+                </ul>
+
+                <!-- END X-NAVIGATION VERTICAL -->   
+  {% block content %}
+  {% endblock %}
+  </div>
+  </div>
+
+     <!-- START PRELOADS -->
+        <audio id="audio-alert" src="{% static 'audio/alert.mp3'%}" preload="auto"></audio>
+        <audio id="audio-fail" src="{% static 'audio/fail.mp3'%}" preload="auto"></audio>
+        
+        <script type="text/javascript" src="{% static 'js/plugins/jquery/jquery.min.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/plugins/jquery/jquery-ui.min.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/plugins/bootstrap/bootstrap.min.js'%}"></script>        
+
+        <script type="text/javascript" src="{% static 'js/plugins/icheck/icheck.min.js'%}"></script>        
+        <script type="text/javascript" src="{% static 'js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/plugins/scrolltotop/scrolltopcontrol.js'%}"></script>
+
+        <script type="text/javascript" src="{% static 'js/plugins/morris/raphael-min.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/plugins/morris/morris.min.js'%}"></script>       
+        <script type="text/javascript" src="{% static 'js/plugins/rickshaw/d3.v3.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/plugins/rickshaw/rickshaw.min.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'%}"></script>                
+        <script type="text/javascript" src="{% static 'js/plugins/bootstrap/bootstrap-datepicker.js'%}"></script>                
+        <script type="text/javascript" src="{% static 'js/plugins/owl/owl.carousel.min.js'%}"></script>                 
+
+        <script type="text/javascript" src="{% static 'js/plugins/moment.min.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/plugins/daterangepicker/daterangepicker.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/plugins/datatables/jquery.dataTables.min.js'%}"></script>    
+
+
+        <script type="text/javascript" src="{% static 'js/plugins.js'%}"></script>        
+        <script type="text/javascript" src="{% static 'js/action.js'%}"></script>
+
+        {% block script %}{% endblock %}
+       
+</body>
+</html>
