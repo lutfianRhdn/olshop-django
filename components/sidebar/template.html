@@ -1,0 +1,26 @@
+{% for navitem in navitems  %}
+<div class="page-sidebar">
+    <ul class="x-navigation">
+      
+        <li class="xn-title">{{navitem.root}}</li>
+        {%for item in navitem.childs %}
+        {% if "url" in item  %}
+        <li class="active">
+            <a href="{{item.url}}"><span class="{{item.icon}}"></span> <span class="xn-text">{{item.name}}</span></a>
+        </li>
+        {% else %}
+        <li class="xn-openable">
+            <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Pages</span></a>
+            <ul>
+                {%for subitem in item.childs %}
+            <li class="active">
+                <a href="{{item.url}}"><span class="fa fa-desktop"></span> <span class="xn-text">{{item.name}}</span></a>
+            </li>      
+                {%endfor%}         
+            </ul>
+        </li>
+        {% endif %}
+        {%endfor%}
+    </ul>
+</div>
+{% endfor %}
