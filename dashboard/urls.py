@@ -5,5 +5,5 @@ from dashboard import views
 app_name = 'dashboard'
 
 urlpatterns = [
-    path('products/', views.show_products, name='products'),
+    path('', views.show_products, name='dashboard'),
 ]

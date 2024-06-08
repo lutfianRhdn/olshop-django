@@ -1,2 +1,2 @@
 /coverage
-__phcache__
+*/__pycache__/*

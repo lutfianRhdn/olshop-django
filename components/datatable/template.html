@@ -1,0 +1,30 @@
+<table class="table datatable" id="example">
+                                        <thead>
+                                            <tr>
+                                                {% for header in headers %}
+                                                <th>{{header.label}}</th>
+                                               {%endfor%}
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                {% for header in headers %}
+                                                <th>{{header.label}}</th>
+                                               {%endfor%}
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                          {% comment %} 
+                                          
+                                         
+                                          {% endcomment %}
+                                          {%for rows in data %}
+                                            <tr>
+                                              {%for header in headers %}
+                                              {{rows['name']}}
+                                                {% comment %} <td>{{ rows.get(header.name)  }}</td> {% endcomment %}
+                                              {%endfor%}
+                                            </tr>
+                                            {%endfor%}
+                                        </tbody>
+                                    </table>
