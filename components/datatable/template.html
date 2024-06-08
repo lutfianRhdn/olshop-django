@@ -18,11 +18,10 @@
                                           
                                          
                                           {% endcomment %}
-                                          {%for rows in data %}
+                                          {%for row in data %}
                                             <tr>
                                               {%for header in headers %}
-                                              {{rows['name']}}
-                                                {% comment %} <td>{{ rows.get(header.name)  }}</td> {% endcomment %}
+                    <td>{{ row[header.name] }}</td>                                                {% comment %} <td>{{ rows.get(header.name)  }}</td> {% endcomment %}
                                               {%endfor%}
                                             </tr>
                                             {%endfor%}
