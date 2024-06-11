@@ -1,29 +1,16 @@
 <table class="table datatable" id="example">
-                                        <thead>
-                                            <tr>
-                                                {% for header in headers %}
-                                                <th>{{header.label}}</th>
-                                               {%endfor%}
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                {% for header in headers %}
-                                                <th>{{header.label}}</th>
-                                               {%endfor%}
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                          {% comment %} 
-                                          
-                                         
-                                          {% endcomment %}
-                                          {%for row in data %}
-                                            <tr>
-                                              {%for header in headers %}
-                    <td>{{ row[header.name] }}</td>                                                {% comment %} <td>{{ rows.get(header.name)  }}</td> {% endcomment %}
-                                              {%endfor%}
-                                            </tr>
-                                            {%endfor%}
-                                        </tbody>
-                                    </table>
+    <thead>
+        <tr>
+           {% slot 'headers' %}{% endslot %}
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+           {% slot 'headers' %}{% endslot %}
+        </tr>
+    </tfoot>
+    <tbody>
+           {% slot 'body' %}{% endslot %}
+       
+    </tbody>
+</table>

@@ -1,10 +1,36 @@
 {% extends "layouts/admin.html" %}
-{% block title %}Dashboard{% endblock %}
+{% block title %}Products{% endblock %}
 {% block content %}
  <!-- START PAGE CONTAINER -->
 
-      <h1 >Products</h1>
-{% component 'datatable' %} {%endcomponent%}
+    <div class="container " style=" border-radius: 19px; background-color:#fff; padding:2rem 4rem; box-shadow: 9px 6px 30px 2px rgba(0,0,0,0.12);">
+    {% comment %} <h1 >Products {{ url('admin:producs:create')}}</h1> {% endcomment %}
+        <a href="{{ 'create' }}" class="btn btn-primary">Add Product</a>
+        {% component 'datatable' %} 
+
+            {%fill 'headers'%}
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Category</th>
+
+                <th>Weight</th>
+                <th>Description</th>
+            {% endfill %}
+            {%fill 'body'%}
+                {% for product in products %}
+                    <tr id="">
+                        <td>{{ product.nama_produk }}</td>
+                        <td>{{ product.harga_produk }}</td>
+                        <td>{{ product.kategori.nama_kategori }}</td>
+                        <td>{{ product.berat_produk }}</td>
+                        <td>{{ product.deskripsi_produk }}</td>
+                    </tr>
+                {% endfor %}
+            {% endfill %}
+
+        {%endcomponent%}
+    </div>
+
 {% endblock %}
 
 {% block script%}

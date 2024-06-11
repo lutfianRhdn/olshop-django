@@ -1,0 +1,26 @@
+{% extends "layouts/admin.html" %}
+{% block title %}Products{% endblock %}
+{% block content %}
+<div class="container " style=" border-radius: 19px; background-color:#fff; padding:2rem 4rem; box-shadow: 9px 6px 30px 2px rgba(0,0,0,0.12);">
+    
+  {%load widget_tweaks%}
+
+  {%for field in form.visible_fields %}
+    <div class="form-group">
+      <label for="{{field.id_for_label}}">{{field.label}} </label>
+      {%if field.field.widget.input_type == 'textarea'%}
+        {%render_field field class="form-control" rows="3"%}
+      {%elif field.field.widget.input_type == 'select'%}
+      <select class="form-control" name="{{ field.name }}" id="{{ field.id }}">
+          {% for value, label in field.choices %}
+            <option value="{{ value.id }}"{% if value == instance.kategori %} selected{% endif %}>{{ label }}</option>
+          {% endfor %}
+      </select>
+      {%else%}
+        {%render_field field class="form-control"%}
+      {%endif%}
+    </div>
+  {%endfor%}
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+{%endblock%}
