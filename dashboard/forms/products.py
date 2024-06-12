@@ -1,19 +1,21 @@
-from django.forms import ModelForm,ModelChoiceField
+from django.forms import ModelForm,ModelChoiceField,FileField,Select,FileInput
 from django.utils.translation import gettext_lazy as _
 
 from product.models import Produk
 from category.models import Kategori
 
 class productform(ModelForm):
-    kategori = ModelChoiceField(
-      queryset=Kategori.objects.all(),
-      to_field_name='nama_kategori', 
-      label=_('Kategori'),
-      empty_label=_('Select Kategori'))
+    kategori = ModelChoiceField(queryset=Kategori.objects.all(), widget=Select(attrs={'class': 'form-control'}))
     
+    foto_produk = FileField(widget=FileInput(attrs={'class': 'form-control'}),)
+    def __init__(self, *args, **kwargs):
+        super(productform, self).__init__(*args, **kwargs)
+        self.fields['kategori'].label_from_instance = lambda obj: obj.nama_kategori
+
     class Meta:
         model = Produk
         fields = ['nama_produk', 'harga_produk', 'berat_produk','deskripsi_produk','stok_produk','kategori','foto_produk']
+        
         labels = {
             'nama_produk': _('Nama Produk'),
             'harga_produk': _('Harga Produk'),
@@ -64,4 +66,6 @@ class productform(ModelForm):
                 'required': 'Foto Produk harus diisi. '
             },
         }
+     
+    
       

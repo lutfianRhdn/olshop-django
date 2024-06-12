@@ -8,7 +8,7 @@ class Produk(models.Model):
     nama_produk = models.CharField(max_length=100)
     harga_produk = models.IntegerField()
     berat_produk = models.IntegerField()
-    foto_produk = models.CharField(max_length=100)
+    foto_produk = models.ImageField()
     deskripsi_produk = models.TextField()
     stok_produk = models.IntegerField()
     kategori = models.ForeignKey(Kategori, models.DO_NOTHING, db_column='id_kategori')
