@@ -1,0 +1,4 @@
+Django==5.0.6
+django_components==0.81
+django-widget-tweaks=1.5.0
+psycopg2==2.9.9

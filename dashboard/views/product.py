@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from product.models import Produk
-from category.models import Kategori
+# from category.models import Kategori
 from dashboard.forms import productform
 import os
 from olshop.settings import BASE_DIR

@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'accounts.apps.AccountsConfig',
     'product.apps.ProductConfig',
-    'payment.apps.PaymentConfig',
     'category.apps.CategoryConfig',
     'dashboard.apps.DashboardConfig',
     
@@ -95,13 +94,12 @@ WSGI_APPLICATION = 'olshop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'olshop',
-        'USER': 'root',
-        'PASSWORD': 'password',
+        'USER': 'postgres',
+        'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': '3306',
-        
+        'PORT': '5432',
     }
 }
 
