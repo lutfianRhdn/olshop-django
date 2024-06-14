@@ -1,13 +1,18 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from product.models import Produk
 # from category.models import Kategori
 from dashboard.forms import productform
 import os
 from olshop.settings import BASE_DIR
+
 def index(request):
     
     products = Produk.objects.all()
-    return render(request, 'admin/products/index.html', {'products': products})
+    products = {
+        'products': products
+    }
+    
+    return render(request, 'admin/products/index.html', products)
 
 def create(request):
     form = productform()
@@ -26,22 +31,24 @@ def store(request):
     #         destination.write(chunk)
 
 def edit(request, id):
+    
+    Produk_ins = Produk.objects.get(kode=id)
+    form = productform(instance=Produk_ins)
+    
     if request.method == 'POST':
-        product = Produk.objects.get(id_produk=id)
-        forms = productform(request.POST, request.FILES, instance=product)
-        if forms.is_valid():
-            forms.save()
+        form = productform(request.POST, request.FILES, instance=Produk_ins)
+        if form.is_valid():
+            form.save()
             return redirect('dashboard:products')
-        else:
-            return render(request, 'admin/products/update.html', {'form': forms, 'product': product})
     else:
-        product = Produk.objects.get(id_produk=id)
-        form = productform(instance=product)
-        return render(request, 'admin/products/update.html', {'form': form, 'product': product})
-def update(request, id):
-    pass
+        form = productform(instance=Produk_ins)
+    
+    return render(request, 'admin/products/update.html', {'form': form, 'product': Produk_ins})
+
 
 def delete(request, id):
-    Produk.objects.filter(id_produk=id).delete()
+    Produk_ins = Produk.objects.get(kode=id)
+    Produk_ins.delete()
+
     return redirect('dashboard:products')
 

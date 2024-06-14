@@ -14,7 +14,16 @@ class productform(ModelForm):
 
     class Meta:
         model = Produk
-        fields = ['kode', 'jenis', 'warna','merk','ketersediaan','jadwal']
+        fields = ['kode', 'jenis', 'warna','merk', 'foto_produk','ketersediaan','jadwal']
+        labels = {
+            'kode': _('Kode Produk'),
+            'jenis': _('Jenis Produk'),
+            'warna': _('Warna Produk'),
+            'merk': _('Merk Produk'),
+            'foto_produk': _('Foto Produk'),
+            'ketersediaan': _('Ketersediaan Produk'),
+            'jadwal': _('Jadwal Produk'),
+        }
         
      
     

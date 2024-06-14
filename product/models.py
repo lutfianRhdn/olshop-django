@@ -4,7 +4,7 @@ from category.models import Jenis
 
 
 class Produk(models.Model):
-    kode = models.CharField(db_column='Kode', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    kode = models.CharField(db_column='Kode', max_length=50, blank=True, primary_key=True)  # Field name made lowercase.
     # jenis = models.CharField(db_column='Jenis', max_length=50, blank=True, null=True)  # Field name made lowercase.
     warna = models.CharField(db_column='Warna', max_length=50, blank=True, null=True)  # Field name made lowercase.
     merk = models.CharField(db_column='Merk', max_length=50, blank=True, null=True)  # Field name made lowercase.

@@ -5,34 +5,44 @@
  <!-- START PAGE CONTAINER -->
 
     <div class="container " style=" border-radius: 19px; background-color:#fff; padding:2rem 4rem; box-shadow: 9px 6px 30px 2px rgba(0,0,0,0.12);">
-    {% comment %} <h1 >Products {{ url('admin:producs:create')}}</h1> {% endcomment %}
+    {% comment %} <h1 >Products {{ url('admin:products:create')}}</h1> {% endcomment %}
         <a href="{{ 'create' }}" class="btn btn-primary">Add Product</a>
         {% component 'datatable' %} 
 
             {%fill 'headers'%}
-                <th>Image</th>
-                <th>Product Name</th>
-                <th>Price</th>
-                <th>Category</th>
-
-                <th>Weight</th>
-                <th>Description</th>
-                <th>Action</th>
+                <th>Kode</th>
+                <th>Jenis</th>
+                <th>Warna</th>
+                <th>Merk</th>
+                <th>ketersediaan</th>
+                <th>Jadwal</th>
+                <th>Notifikasi</th>
+                <th>Foto Produk</th>
+                <th></th>
+                <th></th>
             {% endfill %}
             {%fill 'body'%}
-                {% for product in products %}
-                    <tr id="">
-                        <td><img src="{% static product.foto_produk %}" alt="" style="width: 100px;"></td>
-                        <td>{{ product.nama_produk }}</td>
-                        <td>{{ product.harga_produk }}</td>
-                        <td>{{ product.kategori.nama_kategori }}</td>
-                        <td>{{ product.berat_produk }}</td>
-                        <td>{{ product.deskripsi_produk }}</td>
-                        <td>
-                            <a href="{% url 'dashboard:update_product' id=product.id_produk %}" class="btn btn-warning">Edit</a>
-                            <a href="{% url 'dashboard:delete_product' id=product.id_produk %}" class="btn btn-danger">Delete</a>
-                    </tr>
-                {% endfor %}
+                {% if products %}
+                    {% for product in products %}
+                        <tr id="">
+                            <td>{{ product.kode }}</td>
+                            <td>{{ product.jenis }}</td>
+                            <td>{{ product.warna }}</td>
+                            <td>{{ product.merk }}</td>
+                            <td>{{ product.ketersediaan }}</td>
+                            <td>{{ product.jadwal }}</td>
+                            <td>{{ product.notifikasi }}</td>
+                            <td>{{ product.foto_produk }}</td>
+                            <td><a class="btn btn-primary" href="{% url 'dashboard:update_product' product.kode %}">Edit</a></td>
+                            <td><a class="btn btn-primary" href="{% url 'dashboard:delete_product' product.kode %}">Hapus</a></td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                        <tr>
+                            <td>Nothing</td>
+                        </tr>
+
+                {% endif %}
             {% endfill %}
 
         {%endcomponent%}
