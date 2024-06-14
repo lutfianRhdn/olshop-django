@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'product.apps.ProductConfig',
     'category.apps.CategoryConfig',
     'dashboard.apps.DashboardConfig',
-    
+    # 'auth.apps.AuthConfig'
 ]
 
 MIDDLEWARE = [
@@ -84,6 +84,9 @@ TEMPLATES = [
             ]
         },
     },
+
+        
+    
 ]
 
 WSGI_APPLICATION = 'olshop.wsgi.application'
@@ -100,6 +103,7 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '5432',
+        'DISABLE_SERVER_SIDE_CURSORS': True,
     }
 }
 
@@ -121,7 +125,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.EmailBackend',
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

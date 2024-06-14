@@ -24,19 +24,5 @@ class Migration(migrations.Migration):
                 'managed': False,
             },
         ),
-        migrations.CreateModel(
-            name='Pelanggan',
-            fields=[
-                ('id_pelanggan', models.AutoField(primary_key=True, serialize=False)),
-                ('email_pelanggan', models.CharField(max_length=100)),
-                ('password_pelanggan', models.CharField(max_length=50)),
-                ('nama_pelanggan', models.CharField(max_length=100)),
-                ('telepon_pelanggan', models.CharField(max_length=100)),
-                ('alamat_pelanggan', models.TextField()),
-            ],
-            options={
-                'db_table': 'pelanggan',
-                'managed': False,
-            },
-        ),
+        
     ]

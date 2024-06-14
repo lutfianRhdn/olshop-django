@@ -5,7 +5,7 @@ from product.models import Produk
 from category.models import Jenis
 
 class productform(ModelForm):
-    # jenis = ModelChoiceField(queryset=Jenis.objects.all(), widget=Select(attrs={'class': 'form-control'}))
+    jenis = ModelChoiceField(queryset=Jenis.objects.all(), widget=Select(attrs={'class': 'form-control'}))
     
     # foto_produk = FileField(widget=FileInput(attrs={'class': 'form-control'}),)
     # def __init__(self, *args, **kwargs):
