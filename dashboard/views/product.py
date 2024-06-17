@@ -26,9 +26,6 @@ def store(request):
         if form.is_valid():
             form.save()
     return redirect('dashboard:products')
-    # # with open(os.path.join(BASE_DIR, 'storage')+request.FILES['foto_produk'], 'wb+') as destination:
-    #     for chunk in request.FILES['foto_produk'].chunks():
-    #         destination.write(chunk)
 
 def edit(request, id):
     

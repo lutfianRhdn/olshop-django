@@ -1,0 +1,25 @@
+{% extends "layouts/admin.html" %}
+{% block title %}Category{% endblock %}
+{% block content %}
+<div class="container " style=" border-radius: 19px; background-color:#fff; padding:2rem 4rem; box-shadow: 9px 6px 30px 2px rgba(0,0,0,0.12);">
+    
+  {% load widget_tweaks %}
+  <h1>Update Category</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for field in form.visible_fields %}
+      <div class="form-group">
+        <label for="{{field.id_for_label}}">{{field.label}} {% if field.field.widget.input_type == 'select' %} {{field.nama_kategori}} {% endif %} </label>
+        {% if field.field.widget.input_type == 'textarea' %}
+          {% render_field field class="form-control" rows="3" %}
+
+        {% elif field.field.widget.input_type == 'file' %}
+        <input type="file" name="{{field.html_name}}" class="form-control-file" >
+        {% else %}
+          {% render_field field class="form-control"   %}
+        {% endif %}
+      </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}

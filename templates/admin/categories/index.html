@@ -1,0 +1,72 @@
+{% extends "layouts/admin.html" %}
+{% block title %}Categories{% endblock %}
+{% block content %}
+{%load static%}
+ <!-- START PAGE CONTAINER -->
+
+    <div class="container " style=" border-radius: 19px; background-color:#fff; padding:2rem 4rem; box-shadow: 9px 6px 30px 2px rgba(0,0,0,0.12);">
+    {% comment %} <h1 >Categories {{ url('admin:category:create_categories')}}</h1> {% endcomment %}
+        <a href="{{ 'create' }}" class="btn btn-primary">Add Categories</a>
+        {% component 'datatable' %} 
+
+            {%fill 'headers'%}
+                <th>Kode</th>
+                <th>Jenis</th>
+                <th>Berat</th>
+                <th>Kapasitas</th>
+                <th>Daya Mesin</th>
+                <th></th>
+                <th></th>
+            {% endfill %}
+            {%fill 'body'%}
+                {% if categories %}
+                    {% for category in categories %}
+                        <tr id="">
+                            <td>{{ category.kode }}</td>
+                            <td>{{ category.jenis }}</td>
+                            <td>{{ category.berat }}</td>
+                            <td>{{ category.kapasitas }}</td>
+                            <td>{{ category.daya_mesin }}</td>
+                            <td><a class="btn btn-primary" href="{% url 'dashboard:update_categories' category.kode %}">Edit</a></td>
+                            <td><a class="btn btn-primary" href="{% url 'dashboard:delete_categories' category.kode %}">Hapus</a></td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                        <tr>
+                            <td>Nothing</td>
+                        </tr>
+
+                {% endif %}
+            {% endfill %}
+
+        {%endcomponent%}
+    </div>
+
+{% endblock %}
+
+{% block script%}
+ <!-- END SCRIPTS -->     
+        <script>
+            $(document).ready(function() {
+                // Setup - add a text input to each footer cell
+                $('#example tfoot th').each(function() {
+                    var title = $(this).text();
+                    $(this).html('<input type="text" placeholder="Search" class="form-control" />');
+                });
+                // DataTable
+                var table = $('#example').DataTable();
+                // Apply the search
+                table.columns().every(function() {
+                    var that = this;
+                    $('input', this.footer()).on('keyup change', function() {
+                        if (that.search() !== this.value) {
+                            that
+                                    .search(this.value)
+                                    .draw();
+                        }
+                    });
+                });
+            });
+        </script>
+
+{% endblock %}

@@ -9,9 +9,9 @@ class Sidebar(component.Component):
           {
             "root": "Navigation",
             "childs":[
-              {"name": "Products", 'url': "/products",'icon': "fa fa-square"},
-              {"name": "Categories", 'url': "/categories",'icon': "fa fa-list"},
-              {"name": "Order", 'url': "/orders",'icon': "fa fa-cart"},
+              {"name": "Products", 'url': "/admin/products/",'icon': "fa fa-square"},
+              {"name": "Categories", 'url': "/admin/categories/",'icon': "fa fa-list"},
+              # {"name": "Order", 'url': "/orders",'icon': "fa fa-cart"},
               
             ]
            },
