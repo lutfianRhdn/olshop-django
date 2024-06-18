@@ -516,57 +516,20 @@ $(function() {
                 var calendarComponent = $('#calendar')
                 console.log(calendarComponent.data('url'))
                 var calendar = $('#calendar').fullCalendar({
+                    plugins:['interaction'],
                     header: {
                         left: 'prev,next today',
                         center: 'title',
                         right: 'month,agendaWeek,agendaDay'
                     },
-                    editable: true,
+                    editable: false,
                     eventSources: {url: calendarComponent.data('url')},
-                    droppable: true,
-                    selectable: true,
-                    selectHelper: true,
-                    select: function(start, end, allDay) {
-                        var title = prompt('Event Title:');
-                        if (title) {
-                            calendar.fullCalendar('renderEvent',
-                            {
-                                title: title,
-                                start: start,
-                                end: end,
-                                allDay: allDay
-                            },
-                            true
-                            );
-                        }
-                        calendar.fullCalendar('unselect');
-                    },
-                    drop: function(date, allDay) {
-
-                        var originalEventObject = $(this).data('eventObject');
-
-                        var copiedEventObject = $.extend({}, originalEventObject);
-
-                        copiedEventObject.start = date;
-                        copiedEventObject.allDay = allDay;
-
-                        $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-
-
-                        if ($('#drop-remove').is(':checked')) {
-                            $(this).remove();
-                        }
-
-                    }
+                    droppable: false,
+                    selectable: false,
+                    selectHelper: false,
+                
                 });
                 
-                $("#new-event").on("click",function(){
-                    var et = $("#new-event-text").val();
-                    if(et != ''){
-                        $("#external-events").prepend('<a class="list-group-item external-event">'+et+'</a>');
-                        prepare_external_list();
-                    }
-                });
                 
             }            
         }

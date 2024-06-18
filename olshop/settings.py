@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_components',
     'widget_tweaks',
+    'django_cron',
     'accounts.apps.AccountsConfig',
     'product.apps.ProductConfig',
     'category.apps.CategoryConfig',
@@ -130,6 +131,10 @@ AUTHENTICATION_BACKENDS = [
     'accounts.backends.EmailBackend',
 ]
 
+CRON_CLASSES = [
+    "dashboard.cron.MyCronJob",
+]
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -160,3 +165,17 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+ALLOW_PARALLEL_RUNS =True
+DJANGO_CRON_CACHE = 'cron_cache'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'gumiho.app@gmail.com'
+EMAIL_HOST_PASSWORD = 'abwpafqdnghvjunk'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+
+

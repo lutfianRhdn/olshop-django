@@ -17,7 +17,8 @@ def index(request):
 def create(request):
     form = productform()
     return render(request, 'admin/products/create.html', {'form': form})
-
+def calendar(request):
+    return render(request,'products/calendar.html')
 def store(request):
   
     if request.method == 'POST':

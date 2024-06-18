@@ -1,8 +1,35 @@
-{% extends "layouts/admin_base.html" %}
+{% extends "layouts/user.html" %}
 {% block title %}Products{% endblock %}
 {% block content %}
 {%load static%}
-    <div class="calendar">                                
-        <div id="calendar" data-url="{% url 'product:get-all-calendar-event'%}"></div>                            
-    </div>
+<div class="row container" style="margin: 5em auto">	  
+			<div id="gallery" class="span3">
+            <a href="{% static product.foto_produk%}" title="{{product.merk}}">
+				<img src="{% static product.foto_produk%}" style="width:100%" alt="{{product.merk}}"/>
+            </a>
+		
+			</div>
+			<div class="span6">
+				<h3>{{product.merk}}  </h3>
+				<small>{{product.jenis.kode}}-{{product.jenis.jenis}}-{{product.warna}}-{{product.merk}}</small>
+				<hr class="soft"/>
+			
+			<h4>Product Information</h4>
+                <table class="table table-bordered">
+				<tbody>
+				<tr class="techSpecRow"><th colspan="2">Product Details</th></tr>
+				<tr class="techSpecRow"><td class="techSpecTD1">Merk: </td><td class="techSpecTD2">{{product.merk}}</td></tr>
+				<tr class="techSpecRow"><td class="techSpecTD1">Warma:</td><td class="techSpecTD2">{{product.warna}}</td></tr>
+				<tr class="techSpecRow"><td class="techSpecTD1">Jenis:</td><td class="techSpecTD2"> {{product.jenis.jenis}}</td></tr>
+				<tr class="techSpecRow"><td class="techSpecTD1">Berat:</td><td class="techSpecTD2"> {{product.jenis.berat}}</td></tr>
+				<tr class="techSpecRow"><td class="techSpecTD1">Kapasitas:</td><td class="techSpecTD2">{{product.jenis.kapasitas}}</td></tr>
+					<tr class="techSpecRow"><td class="techSpecTD1">Daya Mesin:</td><td class="techSpecTD2">{{product.jenis.daya_mesin}}</td></tr>
+				</tbody>
+				</table>
+				<br class="clr"/>
+			<hr class="soft"/>
+			</div>
+			
+		</div>
+
 {%endblock%}

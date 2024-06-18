@@ -1,12 +1,14 @@
 from django.shortcuts import render,HttpResponse
 from .models import Produk
 from django.http import JsonResponse
-
-
+from category.models import Jenis
+from accounts.models import Admin
 # Create your views here.
 def show_products(request):
+    categories = Jenis.objects.all()
+    user = Admin.objects.get(id_admin=request.session['user_id'])
     produk = Produk.objects.all()
-    return render(request, 'products/index.html', {'products': produk})
+    return render(request, 'products/index.html', {'products': produk,'categories':categories,'user':user})
 
 def product_detail(request,kode):
     produk = Produk.objects.get(kode=kode)

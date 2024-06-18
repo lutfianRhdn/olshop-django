@@ -1,9 +1,9 @@
 from django.contrib import admin
 
 # # Register your models here.
-# from product.models import Produk
+from product.models import Produk
 # class ProdukAdmin(admin.ModelAdmin):
-#     # list_display = ['nama_produk', 'harga_produk', 'berat_produk', 'deskripsi_produk','stok_produk', 'kategori']
+#     list_display = ['nama_produk', 'harga_produk', 'berat_produk', 'deskripsi_produk','stok_produk', 'kategori']
 #     list_filter = ['kategori']
 #     search_fields = ['nama', 'kategori']
 #     list_per_page = 10
