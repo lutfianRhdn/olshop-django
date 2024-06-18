@@ -8,6 +8,11 @@ class LoginFrom(ModelForm):
         model = UserModel
         fields = ['email', 'password']
         
-     
-    
-      
+        labels = {
+            'email': _('Email'),
+            'password': _('Password'),
+        }
+        placeholders = {
+            'email': _('Email'),
+            'password': _('Password'),
+        }

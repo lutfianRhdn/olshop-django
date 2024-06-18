@@ -4,7 +4,7 @@ from django.db import models
 
 class Admin(models.Model):
     id_admin = models.AutoField(primary_key=True)
-    username = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
     nama_lengkap = models.CharField(max_length=100)
 

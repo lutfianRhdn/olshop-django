@@ -18,54 +18,18 @@
     </head>
 </head>
 <body>
-    <style>
-            tfoot {
-                display: table-header-group;
-            }
-            tfoot input {
-                width: 100%;
-                padding: 3px;
-                box-sizing: border-box;
-            }
-            input[type="search"] {
-                height: 30px;
-                font-size: 12px;
-                line-height: 18px;
-                box-shadow: none;
-                border: 1px solid #D5D5D5;
-                background: #F9F9F9 none repeat scroll 0% 0%;
-                border-radius: 5px;
-            }
-            .dataTables_length select {
-                width: 70px;
-                display: inline;
-                margin: 0px 5px;
-                height: 30px;
-                font-size: 12px;
-                line-height: 18px;
-                box-shadow: none;
-                border: 1px solid #D5D5D5;
-                background: #F9F9F9 none repeat scroll 0% 0%;
-                border-radius: 5px;
-            }
-        </style>
-<div class="page-container">
-    {%component 'sidebar'%} {% endcomponent %}
-    <div class="page-content">
-        {% component 'navbar' %} {%endcomponent%}
+
         {% block content %}
         {% endblock %}
-    </div>
-</div>
 
 
      <!-- START PRELOADS -->
         {% comment %} <audio id="audio-alert" src="{% static 'audio/alert.mp3'%}" preload="auto"></audio>
         <audio id="audio-fail" src="{% static 'audio/fail.mp3'%}" preload="auto"></audio> {% endcomment %}
         
-        <script type="text/javascript" src="{% static 'js/plugins/jquery/jquery.min.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.js'%}"></script>
         <script type="text/javascript" src="{% static 'js/plugins/jquery/jquery-ui.min.js'%}"></script>
-        <script type="text/javascript" src="{% static 'js/plugins/bootstrap/bootstrap.min.js'%}"></script>        
+        <script type="text/javascript" src="{% static 'js/bootstrap.min.js'%}"></script>        
 
         <script type="text/javascript" src="{% static 'js/plugins/icheck/icheck.min.js'%}"></script>        
         <script type="text/javascript" src="{% static 'js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js'%}"></script>
@@ -75,6 +39,9 @@
         <script type="text/javascript" src="{% static 'js/plugins/morris/morris.min.js'%}"></script>       
         <script type="text/javascript" src="{% static 'js/plugins/rickshaw/d3.v3.js'%}"></script>
         <script type="text/javascript" src="{% static 'js/plugins/rickshaw/rickshaw.min.js'%}"></script>
+         <script type="text/javascript" src="{% static 'js/plugins/moment.min.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/plugins/fullcalendar/fullcalendar.min.js'%}"></script>
+
         <script type="text/javascript" src="{% static 'js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'%}"></script>
         <script type="text/javascript" src="{% static 'js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'%}"></script>                
         <script type="text/javascript" src="{% static 'js/plugins/bootstrap/bootstrap-datepicker.js'%}"></script>                

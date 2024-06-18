@@ -513,7 +513,8 @@ $(function() {
                 var y = date.getFullYear();
 
                 prepare_external_list();
-
+                var calendarComponent = $('#calendar')
+                console.log(calendarComponent.data('url'))
                 var calendar = $('#calendar').fullCalendar({
                     header: {
                         left: 'prev,next today',
@@ -521,7 +522,7 @@ $(function() {
                         right: 'month,agendaWeek,agendaDay'
                     },
                     editable: true,
-                    eventSources: {url: "assets/ajax_fullcalendar.php"},
+                    eventSources: {url: calendarComponent.data('url')},
                     droppable: true,
                     selectable: true,
                     selectHelper: true,
