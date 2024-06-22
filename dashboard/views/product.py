@@ -50,3 +50,33 @@ def delete(request, id):
 
     return redirect('dashboard:products')
 
+
+from django.views import generic
+
+
+class ProdukListView(generic.ListView):
+    model = Produk
+    context_object_name ="products"
+    template_name = 'admin/products/index.html'
+    
+class ProdukDetailView(generic.DetailView):
+    model = Produk
+    template_name = 'admin/products/detail.html'
+
+class ProdukCreateView(generic.CreateView):
+    model = Produk
+    form_class = productform
+    template_name = 'admin/products/create.html'
+    fields = '__all__'
+    
+class ProdukUpdateView(generic.UpdateView):
+    model = Produk
+    form_class = productform
+    template_name = 'admin/products/update.html'
+    fields = '__all__'
+    
+class ProdukDeleteView(generic.DeleteView):
+    model = Produk
+    template_name = 'admin/products/delete.html'
+    success_url = '/dashboard/products/'
+    
