@@ -9,7 +9,7 @@ from django.core.cache import cache
 
 def index_categories(request):
     categories = Jenis.objects.all()
-    cache.add("CATEGORY", categories)
+    cache.add("CATEGORY", categories, 60*60*24 )# 1 hari
     print(cache.get("CATEGORY"))
     categories = {
         'categories': categories
