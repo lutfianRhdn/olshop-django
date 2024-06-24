@@ -77,6 +77,6 @@ class ProdukUpdateView(generic.UpdateView):
     
 class ProdukDeleteView(generic.DeleteView):
     model = Produk
-    template_name = 'admin/products/delete.html'
+    # template_name = 'admin/products/delete.html'
     success_url = '/dashboard/products/'
     

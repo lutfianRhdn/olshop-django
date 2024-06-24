@@ -9,6 +9,10 @@
                 <div class="login-logo"></div>
                 <div class="login-body">
                     <div class="login-title"><strong>Log In</strong> to your account</div>
+                    <div class="login-title">Enter your credentials below</div>
+                    {% if error %}
+                    <p><small> {{error}} </small></p>
+                    {%endif%}
                     <form action="{%url 'accounts:handle_login'%}" class="form-horizontal" method="post">
                         {% csrf_token %}
                         {%for field in form %}

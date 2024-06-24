@@ -2,14 +2,19 @@ from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from category.models import Jenis
 from dashboard.forms import categoriesForm
 import os
+from django.core.cache import cache
+
 
 
 
 def index_categories(request):
     categories = Jenis.objects.all()
+    cache.add("CATEGORY", categories)
+    print(cache.get("CATEGORY"))
     categories = {
         'categories': categories
     }
+    
     
     return render(request, 'admin/categories/index.html', categories)
 
@@ -40,10 +45,11 @@ def delete_categories(request, id):
     return redirect('dashboard:categories')
 
 def store_categories(request):
-  
     if request.method == 'POST':
 
         form = categoriesForm(request.POST, request.FILES)
+        cache.add("CATEGORY", form)
+        
         if form.is_valid():
             form.save()
     return redirect('dashboard:categories')
